@@ -1,12 +1,12 @@
-CREATE TABLE IF NOT EXISTS posts (
-    id SERIAL PRIMARY KEY,
-    title TEXT NOT NULL,
-    content TEXT,
-    tag_id INTEGER REFERENCES tags(id),
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
-
 CREATE TABLE IF NOT EXISTS tags (
     id SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS posts (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    content JSONB,
+    tag_id INTEGER REFERENCES tags(id),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

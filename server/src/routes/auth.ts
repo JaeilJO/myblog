@@ -13,6 +13,7 @@ router.get('/login',(req,res)=>{
   
   if(userid === ADMIN_ID && comparePassword){
     req.session.user = { userid, role: "admin" };
+    console.log(userid, 'is success login')
     res.status(200).json({ message: 'Login successful' });
   }else{
     res.status(401).json({ message: 'Login failed' });
