@@ -21,12 +21,15 @@ app.use(
   })
 );
 
-app.get('/', requireLogin,(req, res) => {
-  console.log(res)
-  res.send('Hello World');
-});
+
+
 
 app.use('/auth', authRouter);
+
+app.use('/post',requireLogin, (req,res)=>{
+  console.log('hello')
+  res.send('Hello')
+})
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

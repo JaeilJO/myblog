@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 
 export default function requireLogin(req: Request, res: Response, next: NextFunction) {
+    console.log(req)
     console.log(req.session.user)
     if (req.session.user) {
       next();
